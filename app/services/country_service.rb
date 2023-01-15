@@ -7,8 +7,12 @@ class CountryService
     JSON.parse(conn.get(url).body, symbolize_names: true)
   end
 
-  def self.random_country
+  def self.all_countries
     get_url("/v3.1/all")
+  end
+
+  def self.find_country(country)
+    get_url("/v3.1/name/#{country}")
   end
 
 end
