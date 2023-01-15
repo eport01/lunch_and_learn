@@ -12,5 +12,5 @@ RSpec.describe RecipesFacade do
     expect(recipes[0].url).to eq("https://www.seriouseats.com/recipes/2013/11/andy-rickers-naam-cheuam-naam-taan-piip-palm-sugar-simple-syrup.html")
   end 
 
-  it 'creates an array of objects even if there is one object', 
+  # it 'creates an array of objects even if there is one object',
 end
