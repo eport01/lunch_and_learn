@@ -60,5 +60,6 @@ RSpec.describe 'return recipes for a country' do
 
     recipes = JSON.parse(response.body, symbolize_names: true)[:data]
     
+    expect(recipes).to eq([])
   end
 end
