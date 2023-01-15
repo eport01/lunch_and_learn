@@ -27,14 +27,15 @@ RSpec.describe 'return recipes for a country' do
 
   end
 
+
   it 'returns recipes for a random country when no country was input' do 
-    VCR.insert_cassette('random country')
 
     get "/api/v1/recipes?country="
     
     expect(response).to be_successful
 
     recipes = JSON.parse(response.body, symbolize_names: true)[:data]
+
     expect(recipes[0]).to have_key(:id)
     expect(recipes[0][:id]).to eq(nil)
 
