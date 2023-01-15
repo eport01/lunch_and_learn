@@ -27,10 +27,10 @@ RSpec.describe 'return recipes for a country' do
 
   end
 
-  it 'returns recipes for a random country when no country was input', :vcr do 
-    # VCR.insert_cassette('random country')
-    country = ""
-    get "/api/v1/recipes?country=#{country}"
+  it 'returns recipes for a random country when no country was input' do 
+    VCR.insert_cassette('random country')
+
+    get "/api/v1/recipes?country="
     
     expect(response).to be_successful
 
@@ -49,7 +49,7 @@ RSpec.describe 'return recipes for a country' do
 
     expect(recipes[0][:attributes]).to have_key(:country)
     expect(recipes[0][:attributes][:country]).to be_a(String)
-    # VCR.eject_cassette
+    VCR.eject_cassette
   end
 
   it 'returns an empty array if country entered is invalid or no recipes exist', :vcr do 
