@@ -26,6 +26,12 @@ RSpec.describe CountryService do
     expect(country[0][:name]).to have_key(:common)
     expect(country[0][:name][:common]).to eq("France")
     expect(country[0][:name][:common]).to_not eq("Grenada")
-
   end
+
+  it 'returns status 404 and not found if country is invalid', :vcr do 
+    country = CountryService.find_country("dog")
+    expect(country[:status]).to eq(404)
+    expect(country[:message]).to eq("Not Found")
+  end
+
 end
