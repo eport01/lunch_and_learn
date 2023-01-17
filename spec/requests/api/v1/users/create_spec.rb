@@ -22,7 +22,7 @@ RSpec.describe 'User Registration' do
     it 'successful post request renders message and status 201', :vcr do 
       user = {
         "name": "Emily Port",
-        "email": "em@mod3_is_almost_complete.com", 
+        "email": "emi@mod3_is_almost_complete.com", 
         "password": "1234"
       }
 
@@ -31,7 +31,17 @@ RSpec.describe 'User Registration' do
       user_response = JSON.parse(response.body, symbolize_names: true)
 
       expect(response).to have_http_status 201
-      expect(user_response[:message]).to eq("API Key was successfully created")
+      expect(user_response[:data]).to have_key(:id)
+      expect(user_response[:data][:type]).to eq("user")
+
+      expect(user_response[:data][:attributes]).to have_key(:name)
+      expect(user_response[:data][:attributes][:name]).to be_a String 
+
+      expect(user_response[:data][:attributes]).to have_key(:email)
+      expect(user_response[:data][:attributes][:email]).to be_a String 
+
+      expect(user_response[:data][:attributes]).to have_key(:api_key)
+      expect(user_response[:data][:attributes][:api_key]).to be_a String 
     end
 
     it 'user gets error message and status 404 if trying to create user who already exists', :vcr do 
