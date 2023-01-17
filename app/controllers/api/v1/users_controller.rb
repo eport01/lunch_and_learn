@@ -5,6 +5,10 @@ class Api::V1::UsersController < ApplicationController
       user.save 
       session[:user_id] = user.id
       user.update(api_key: SecureRandom.hex)
+      render json: {message: "API Key was successfully created"}, status: 201
+    else
+      render json: {error: "This user already exists, please login"}, status: 404
+
     end
   end
 
