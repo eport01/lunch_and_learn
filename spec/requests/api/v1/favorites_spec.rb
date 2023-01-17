@@ -100,6 +100,23 @@ RSpec.describe 'User can favorite recipes' do
       expect(favorites[0][:attributes][:created_at]).to be_a String 
       expect(favorites).to_not include(favorite3)
     end
+
+    it 'a user with no favorited recipes returns an empty array', :vcr do 
+      user = User.create!({
+        "name": "Em",
+        "email": "eldo@coolkids.com", 
+        "password": "1234", 
+        "api_key": "4eeac766b9a1efcf05df89ca20bd70ef"
+      })
+      get "/api/v1/favorites?api_key=4eeac766b9a1efcf05df89ca20bd70ef"
+
+      expect(response).to be_successful
+
+      favorites = JSON.parse(response.body, symbolize_names: true)[:data]
+
+      expect(favorites).to eq([])
+
+    end
   end
 
 end
