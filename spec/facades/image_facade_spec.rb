@@ -13,4 +13,10 @@ RSpec.describe ImageFacade do
     expect(images[0].url).to eq("https://images.unsplash.com/photo-1606064195579-a48c728cec35?ixid=MnwzOTk3ODB8MHwxfHNlYXJjaHwxfHxMYW9zfGVufDB8fHx8MTY3MzkxODI5Nw&ixlib=rb-4.0.3")
   
   end
+
+  it 'returns an empty array if no images were found', :vcr do 
+    images = ImageFacade.images("stevenlalala")
+
+    expect(images).to eq([])
+  end
 end

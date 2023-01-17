@@ -34,4 +34,9 @@ RSpec.describe 'return learning resources for a country' do
     expect(resources[:attributes][:images][0]).to have_key(:url)
     expect(resources[:attributes][:images][0][:url]).to be_an(String)
   end
+
+  it 'if no video or images are found, the video and image keys point to empty object', :vcr do 
+    
+  end
+
 end

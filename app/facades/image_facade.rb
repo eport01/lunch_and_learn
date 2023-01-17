@@ -1,7 +1,12 @@
 class ImageFacade 
   def self.images(country)
-    ImageService.country_images(country)[:results].map do |data|
-      Image.new(data)
+    images = ImageService.country_images(country)
+    if images[:total] > 0 
+      images[:results].map do |data|
+        Image.new(data)
+      end
+    else 
+      []
     end
   end
 end
