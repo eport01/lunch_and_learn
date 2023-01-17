@@ -10,8 +10,5 @@ class RecipesFacade
     else
       []
     end
-    
-    
-
   end
 end
