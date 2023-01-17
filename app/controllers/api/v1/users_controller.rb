@@ -12,13 +12,13 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
-  def login 
-    user = User.find_by(email: params[:email])
-  end
+  # def login 
+  #   user = User.find_by(email: params[:email])
+  # end
 
-  def logout 
+  # def logout 
 
-  end
+  # end
 
   private 
   def user_params
