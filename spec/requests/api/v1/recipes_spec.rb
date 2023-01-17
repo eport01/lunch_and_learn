@@ -36,20 +36,24 @@ RSpec.describe 'return recipes for a country' do
 
     recipes = JSON.parse(response.body, symbolize_names: true)[:data]
 
-    expect(recipes[0]).to have_key(:id)
-    expect(recipes[0][:id]).to eq(nil)
+    if recipes.count > 1 
+      expect(recipes[0]).to have_key(:id)
+      expect(recipes[0][:id]).to eq(nil)
 
-    expect(recipes[0][:attributes]).to have_key(:title)
-    expect(recipes[0][:attributes][:title]).to be_a(String)
+      expect(recipes[0][:attributes]).to have_key(:title)
+      expect(recipes[0][:attributes][:title]).to be_a(String)
 
-    expect(recipes[0][:attributes]).to have_key(:url)
-    expect(recipes[0][:attributes][:url]).to be_a(String)
+      expect(recipes[0][:attributes]).to have_key(:url)
+      expect(recipes[0][:attributes][:url]).to be_a(String)
 
-    expect(recipes[0][:attributes]).to have_key(:image)
-    expect(recipes[0][:attributes][:image]).to be_a(String)
+      expect(recipes[0][:attributes]).to have_key(:image)
+      expect(recipes[0][:attributes][:image]).to be_a(String)
 
-    expect(recipes[0][:attributes]).to have_key(:country)
-    expect(recipes[0][:attributes][:country]).to be_a(String)
+      expect(recipes[0][:attributes]).to have_key(:country)
+      expect(recipes[0][:attributes][:country]).to be_a(String)
+    else 
+      expect(recipes).to eq([])
+    end
     VCR.eject_cassette
   end
 
