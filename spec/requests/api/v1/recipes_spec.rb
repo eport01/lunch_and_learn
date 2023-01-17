@@ -59,7 +59,7 @@ RSpec.describe 'return recipes for a country' do
     expect(response).to be_successful
 
     recipes = JSON.parse(response.body, symbolize_names: true)[:data]
-    
+
     expect(recipes).to eq([])
   end
 end
