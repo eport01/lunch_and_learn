@@ -36,7 +36,7 @@ RSpec.describe 'return recipes for a country' do
 
     recipes = JSON.parse(response.body, symbolize_names: true)[:data]
 
-    if recipes.count > 1 
+    if recipes[0].count > 1 
       expect(recipes[0]).to have_key(:id)
       expect(recipes[0][:id]).to eq(nil)
 
