@@ -5,7 +5,8 @@ Rails.application.routes.draw do
       resources :recipes, only: [:index] 
       resources :learning_resources, only: [:index]  
       resources :users 
-      resources :favorites 
+      resources :favorites, except: [:destroy] 
+      delete '/favorites', to: 'favorites#destroy'
     end
   end
 end
