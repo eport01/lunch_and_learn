@@ -38,15 +38,14 @@ The back-end handles the project's API consumption and creation and acts as the 
 2. cd into the root directory
 3. Install gem packages: `bundle install`
 4. Setup the database: `rails db:{drop,create,migrate}`
-5. Setup Figaro gem: `bundle exec figaro install`
+5. Setup figaro gem: `bundle exec figaro install`, an `config/application.yml` file should be created
 6. Setup external API keys, steps are below
 7. You may run the RSpec test suite locally with `bundle exec rspec`
 8. Run `rails s` to access the endpoints locally
 
 ## Setup API Keys
-Lunch and Learn uses 3 external APIs that you need to get keys for.
-
 Copy and paste the following into your `config/application.yml` file.
+Replace each `<your_key>` below with your own after setting these up. Links are below. 
 
 recipes_app_key: [<your_app_key>](https://developer.edamam.com/edamam-recipe-api)
 
