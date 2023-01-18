@@ -2,11 +2,23 @@
   <h1>Lunch and Learn</h1>
 </div>
 
-## Project Overview 
+## Table of Contents 
+- [Project Overview](#project-overview)
+- [Learning Goals](#learning-goals)
+- [Data Sources](#data-sources)
+- [Setup](#setup)
+- [Setup API Keys](#setup-api-keys)
+- [Available Endpoints](#available-endpoints)
+- [Gems](#gems)
+
+
+
+### Project Overview 
 - [Project Specs](https://backend.turing.edu/module3/projects/lunch_and_learn/)
 
 Lunch and Learn is a RESTful API that a front-end team can expose in order for a user to search for cuisines by country, learn more about each country, and save favorite recipes to access later.  
-The back-end handles the project's API consumption and acts as the interface to the project's database.
+The back-end handles the project's API consumption and creation and acts as the interface to the project's database.
+
 
 ### Learning Goals 
 - Expose an API for CRUD functionality 
@@ -15,15 +27,40 @@ The back-end handles the project's API consumption and acts as the interface to 
 - Determine completion criteria based on the needs of other developers
 - Test both API consumption and exposure, making use of at least one mocking tool (VCR, Webmock, etc).
 
+### Data Sources
+- [Unsplash Image API](https://unsplash.com/developers)
+- [YouTube Data API](https://developers.google.com/youtube/v3/getting-started) 
+- [Edamam Recipe Search API](https://developer.edamam.com/edamam-recipe-api)
+- [REST Countries API](https://restcountries.com/#api-endpoints-v3-all)
+
 ## Setup 
 1. Clone the repository
 2. cd into the root directory
 3. Install gem packages: `bundle install`
 4. Setup the database: `rails db:{drop,create,migrate}`
-5. You may run the RSpec test suite locally with `bundle exec rspec`
-6. Run `rails s` to access the endpoints locally
+5. Setup Figaro gem: `bundle exec figaro install`
+6. Setup external API keys, steps are below
+7. You may run the RSpec test suite locally with `bundle exec rspec`
+8. Run `rails s` to access the endpoints locally
+
+## Setup API Keys
+Lunch and Learn uses 3 external APIs that you need to get keys for.
+
+Copy and paste the following into your `config/application.yml` file.
+
+recipes_app_key: [<your_app_key>](https://developer.edamam.com/edamam-recipe-api)
+
+recipes_app_id: [<your_app_id>](https://developer.edamam.com/edamam-recipe-api)
+
+youtube_api_key: [<your_youtube_key>](https://developers.google.com/youtube/v3/getting-started)
+
+unsplash_access_key: [<your_unsplash_client_id>](https://unsplash.com/developers)
+
+
 
 ## Available Endpoints 
+To access Back End Server run `rails s`
+
 Back End Server: http://localhost:3000
 
 <details close>
@@ -231,3 +268,14 @@ JSON Response Example:
 {message: "The recipe was successfully deleted from your favorites"}
 ```
 </details>
+
+## Gems 
+- [pry](https://github.com/pry/pry)
+- [rspec-rails](https://github.com/rspec/rspec-rails)
+- [capybara](https://github.com/teamcapybara/capybara)
+- [simplecov](https://github.com/simplecov-ruby/simplecov)
+- [shoulda-matchers](https://github.com/thoughtbot/shoulda-matchers)
+- [webmock](https://github.com/bblimke/webmock)
+- [vcr](https://github.com/vcr/vcr)
+- [faraday](https://lostisland.github.io/faraday/usage/)
+- [figaro](https://github.com/laserlemon/figaro)
