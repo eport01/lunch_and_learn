@@ -26,7 +26,9 @@ The back-end handles the project's API consumption and acts as the interface to 
 ## Available Endpoints 
 Back End Server: http://localhost:3000
 
-### Get Recipes for a Particular Country 
+<details close>
+
+<summary>Get Recipes for a Particular Country</summary> 
 
 Request: <br>
 ```
@@ -64,7 +66,11 @@ JSON Response Example:
     ]
 }
 ```
-### Get Learning Resources for a Particular Country 
+</details>
+
+<details close>
+
+<summary>Get Learning Resources for a Particular Country</summary> 
 
 Request: <br>
 ```
@@ -105,7 +111,11 @@ JSON Response Example:
     }
 }
 ``` 
-### User Registration 
+</details>
+
+<details close>
+
+<summary>User Registration</summary>
 
 Request: <br>
 ```
@@ -135,7 +145,12 @@ JSON Response Example:
   }
 }
 ```
-### Add Favorites  
+
+</details>
+
+<details close>
+
+<summary>Add Favorites</summary>  
 
 Request: <br>
 ```
@@ -156,8 +171,11 @@ JSON Response Example:
     "success": "Favorite added successfully"
 }
 ```
+</details>
 
-### Get a User's Favorites 
+<details close>
+
+<summary>Get a User's Favorites</summary> 
 
 Request: <br>
 ```
@@ -191,3 +209,25 @@ JSON Response Example:
     ]
  }
  ```
+</details>
+
+<details close>
+
+<summary>Delete a Favorite From a User</summary> 
+
+Request: <br>
+```
+DELETE /api/v1/favorites
+```
+Send a JSON payload in the body of the request:
+```json 
+{
+  "favorite_id": 4, 
+  "api_key": "697a91baaff5a683a6c8e8e13d1b928c"
+}
+```
+JSON Response Example: 
+```json
+{message: "The recipe was successfully deleted from your favorites"}
+```
+</details>
