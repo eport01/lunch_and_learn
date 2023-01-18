@@ -117,6 +117,16 @@ RSpec.describe 'User can favorite recipes' do
       expect(favorites).to eq([])
 
     end
+
+    it 'an error message is returned if user does not exist', :vcr do 
+      get "/api/v1/favorites?api_key=1234766b9a1efcf05df89ca20bd70ef"
+
+      favorites = JSON.parse(response.body, symbolize_names: true)
+      expect(favorites[:error]).to eq("No user with that api key exists")
+    
+      expect(response).to have_http_status 404
+
+    end
   end
 
   describe 'delete a favorited recipe' do 
