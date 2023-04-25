@@ -13,8 +13,16 @@ class Api::V1::FavoritesController < ApplicationController
 
   def index 
     user = User.find_by(api_key: params[:api_key])
-    if user != nil 
-      render json: FavoriteSerializer.new(user.favorites)
+    if user != nil && params[:api_key]
+      favorites_cache = Rails.cache.read(['favorites_data'])
+      if favorites_cache == nil 
+        favorites_cache = user.favorites 
+        Rails.cache.write(['favorites_data'], favorites_cache, expires_in: 5.minutes)
+        render json: FavoriteSerializer.new(favorites_cache)
+      else
+        render json: FavoriteSerializer.new(favorites_cache)
+
+      end
     else 
       render json: {error: "No user with that api key exists"}, status: 404
     end
