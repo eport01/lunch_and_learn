@@ -15,11 +15,12 @@ class Api::V1::FavoritesController < ApplicationController
   def index 
     # user = User.find_by(api_key: params[:api_key])
     if @user != nil && params[:api_key]
-      favorites_cache = Rails.cache.read(['favorites_data'])
+      favorites_cache = Rails.cache.read(['favorite_data', @user])
       if favorites_cache == nil 
         favorites_cache = @user.favorites 
-        Rails.cache.write(['favorites_data'], favorites_cache, expires_in: 5.minutes)
+        Rails.cache.write(['favorite_data', @user], favorites_cache, expires_in: 5.minutes)
         render json: FavoriteSerializer.new(favorites_cache)
+
       else
         render json: FavoriteSerializer.new(favorites_cache)
 
