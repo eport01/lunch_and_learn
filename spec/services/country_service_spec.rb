@@ -10,7 +10,7 @@ RSpec.describe CountryService do
     expect(country[:name]).to be_a Hash 
     
     expect(country[:name]).to have_key(:common)
-    expect(country[:name][:common]).to eq("Grenada")
+    expect(country[:name][:common]).to eq("Faroe Islands")
 
     expect(country[:name][:common]).to_not eq("France")
 

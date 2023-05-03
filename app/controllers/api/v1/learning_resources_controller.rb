@@ -3,7 +3,8 @@ class Api::V1::LearningResourcesController < ApplicationController
   def index 
     if params[:api_key] && @user != nil 
       resources_cache = Rails.cache.read(['resources_data'])
-      if resources_cache == nil 
+
+      if resources_cache == nil || resources_cache.country != params[:country]
         resources_cache = LearningResourcesFacade.resources(params[:country])
         Rails.cache.write(['resources_data'], resources_cache, expires_in: 5.minutes)
         render json: LearningResourcesSerializer.new(resources_cache)

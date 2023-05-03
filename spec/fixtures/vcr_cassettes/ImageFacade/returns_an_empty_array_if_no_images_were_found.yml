@@ -44,6 +44,8 @@ http_interactions:
       - '0'
       X-Per-Page:
       - '10'
+      X-Powered-By:
+      - hero-app
       Content-Language:
       - en
       Etag:
@@ -51,11 +53,11 @@ http_interactions:
       X-Ratelimit-Limit:
       - '50'
       X-Ratelimit-Remaining:
-      - '48'
+      - '47'
       X-Request-Id:
-      - 11f71e4e-5fc9-429e-87a0-dae65ba689cc
+      - d1d01ba7-3c75-47c4-8e5b-5ba7fa754a7d
       X-Runtime:
-      - '0.050327'
+      - '0.059476'
       Strict-Transport-Security:
       - max-age=63072000; includeSubDomains
       Via:
@@ -63,21 +65,21 @@ http_interactions:
       Accept-Ranges:
       - bytes
       Date:
-      - Tue, 17 Jan 2023 16:44:06 GMT
+      - Wed, 03 May 2023 18:42:14 GMT
       Age:
       - '0'
       X-Served-By:
-      - cache-iad-kjyo7100079-IAD, cache-den8229-DEN
+      - cache-iad-kjyo7100079-IAD, cache-den8271-DEN
       X-Cache:
       - MISS, MISS
       X-Cache-Hits:
       - 0, 0
       X-Timer:
-      - S1673973847.555198,VS0,VE112
+      - S1683139335.657060,VS0,VE113
       Vary:
-      - Accept-Encoding, Origin,Authorization,Accept-Language,client-geo-region,Accept
+      - Accept-Encoding,Authorization,Accept-Language,client-geo-region,Accept
     body:
       encoding: ASCII-8BIT
       string: '{"total":0,"total_pages":0,"results":[]}'
-  recorded_at: Tue, 17 Jan 2023 16:44:06 GMT
+  recorded_at: Wed, 03 May 2023 18:42:14 GMT
 recorded_with: VCR 6.1.0

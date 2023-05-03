@@ -8,7 +8,7 @@ RSpec.describe Country, type: :poros do
       country = countries.first 
       expect(country).to be_an_instance_of Country
       expect(country.name).to be_a String 
-      expect(country.name).to eq("Grenada")
+      expect(country.name).to eq("Faroe Islands")
       expect(country.name).to_not eq("France")
 
 

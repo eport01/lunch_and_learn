@@ -7,7 +7,7 @@ RSpec.describe CountryFacade do
     expect(countries).to be_an Array 
     expect(countries[0]).to be_an_instance_of(Country)
 
-    expect(countries[0].name).to eq("Grenada")
+    expect(countries[0].name).to eq("Faroe Islands")
 
   end
 
@@ -16,6 +16,7 @@ RSpec.describe CountryFacade do
     expect(country).to be_an_instance_of(Country)
     expect(country.name).to eq("Peru")
     expect(country.name).to_not eq("Grenada")
+  
   end
 
   it 'returns nil if country doesnt exist', :vcr do 

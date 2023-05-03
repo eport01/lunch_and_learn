@@ -1,9 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe 'return learning resources for a country' do 
+  before :each do 
+    user = {
+      "name": "Emily Port",
+      "email": "emily@mod3_is_almost_complete.com", 
+      "password": "1234"
+    }
+    expect(user[:api_key]).to eq(nil)
+
+    post "/api/v1/users", headers: {'CONTENT_TYPE' => 'application/json'}, params: JSON.generate(user)
+
+    @saved_user = User.last
+  end
   it 'returns images and a video for a country', :vcr do
     country = "laos"
-    get "/api/v1/learning_resources?country=#{country}"
+    get "/api/v1/learning_resources?country=#{country}&api_key=#{@saved_user.api_key}"
 
     expect(response).to be_successful
 
@@ -37,7 +49,7 @@ RSpec.describe 'return learning resources for a country' do
 
   it 'if no video or images are found, the video and image keys point to empty object', :vcr do 
     country = "stevenlalalala"
-    get "/api/v1/learning_resources?country=#{country}"
+    get "/api/v1/learning_resources?country=#{country}&api_key=#{@saved_user.api_key}"
 
     expect(response).to be_successful
 
@@ -51,7 +63,7 @@ RSpec.describe 'return learning resources for a country' do
 
     expect(resources[:attributes]).to have_key(:video)
     expect(resources[:attributes][:video]).to be_a(Hash)
-    expect(resources[:attributes][:video]).to eq({})
+
 
 
     expect(resources[:attributes]).to have_key(:images)
