@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Recipe, type: :poros do 
-  describe 'it returns recipe objects', :vcr do 
+  describe 'it returns recipe objects' do 
     it 'response has defined attributes' do 
       recipes = RecipesFacade.recipes("Thailand")
       expect(recipes).to be_an Array 

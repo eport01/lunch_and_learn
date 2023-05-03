@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'return recipes for a country', :vcr do 
+RSpec.describe 'return recipes for a country' do 
   before :each do 
     user = {
       "name": "Emily Port",

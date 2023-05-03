@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Country, type: :poros do 
-  describe 'it returns country objects', :vcr do 
+  describe 'it returns country objects' do 
     it 'responses have name attributes' do 
       countries = CountryFacade.random_country
       expect(countries).to be_an Array 
