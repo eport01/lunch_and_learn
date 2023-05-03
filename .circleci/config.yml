@@ -38,9 +38,6 @@ jobs: # a collection of steps
           name: Wait for DB
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run: 
-          name: Redis
-          command: sudo apt-get install redis-tools ; while ! redis-cli ping 2>/dev/null ; do sleep 1 ; done
-      - run: 
           name: Start Redis server
           command: redis-server
       - run:
