@@ -1,7 +1,7 @@
 require 'rails_helper' 
 
 RSpec.describe ImageService do 
-  describe 'returns a images for a country', :vcr do 
+  describe 'returns a images for a country' do 
     it 'with certain attributs' do 
       images = ImageService.country_images("Laos")
 

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Image, type: :poros do 
-  describe 'it returns image objects', :vcr do 
+  describe 'it returns image objects' do 
     it 'response has defined attributes' do 
       images = ImageFacade.images("Laos")
       expect(images). to be_an Array 

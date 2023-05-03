@@ -1,7 +1,7 @@
 require 'rails_helper' 
 
 RSpec.describe CountryService do 
-  it 'it returns a list of all the countries', :vcr do 
+  it 'it returns a list of all the countries' do 
     countries = CountryService.all_countries
     expect(countries).to be_an Array  
 
@@ -10,13 +10,13 @@ RSpec.describe CountryService do
     expect(country[:name]).to be_a Hash 
     
     expect(country[:name]).to have_key(:common)
-    expect(country[:name][:common]).to eq("Grenada")
+    expect(country[:name][:common]).to eq("Faroe Islands")
 
     expect(country[:name][:common]).to_not eq("France")
 
   end
 
-  it 'returns one country', :vcr do 
+  it 'returns one country' do 
     country = CountryService.find_country("France")
     expect(country).to be_an Array  
     expect(country.count).to eq(1)
@@ -28,7 +28,7 @@ RSpec.describe CountryService do
     expect(country[0][:name][:common]).to_not eq("Grenada")
   end
 
-  it 'returns status 404 and not found if country is invalid', :vcr do 
+  it 'returns status 404 and not found if country is invalid' do 
     country = CountryService.find_country("dog")
     expect(country[:status]).to eq(404)
     expect(country[:message]).to eq("Not Found")

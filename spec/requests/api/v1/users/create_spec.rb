@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'User Registration' do 
   describe 'a visitor can register' do 
-    it 'by entering name, email, and password, api key is created and post request is sent to users table', :vcr do 
+    it 'by entering name, email, and password, api key is created and post request is sent to users table' do 
       user = {
         "name": "Emily Port",
         "email": "emily@mod3_is_almost_complete.com", 
@@ -19,7 +19,7 @@ RSpec.describe 'User Registration' do
       expect(saved_user.password_digest).to_not eq(nil)
       expect(saved_user.api_key).to_not eq(nil) 
     end
-    it 'successful post request renders message and status 201', :vcr do 
+    it 'successful post request renders message and status 201' do 
       user = {
         "name": "Emily Port",
         "email": "emi@mod3_is_almost_complete.com", 
@@ -44,7 +44,7 @@ RSpec.describe 'User Registration' do
       expect(user_response[:data][:attributes][:api_key]).to be_a String 
     end
 
-    it 'user gets error message and status 404 if trying to create user who already exists', :vcr do 
+    it 'user gets error message and status 404 if trying to create user who already exists' do 
       user1 = {
         "name": "Emily Port",
         "email": "em@mod3_is_almost_complete.com", 

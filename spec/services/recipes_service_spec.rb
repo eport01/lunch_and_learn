@@ -1,7 +1,7 @@
 require 'rails_helper' 
 
 RSpec.describe RecipesService do 
-  describe 'returns attributes for recipes', :vcr do 
+  describe 'returns attributes for recipes' do 
     it 'has certain attributes' do 
       recipes = RecipesService.recipes_for_country("thailand")
       expect(recipes).to be_a Hash  

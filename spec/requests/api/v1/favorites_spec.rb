@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'User can favorite recipes' do 
   describe 'a visitor can save a recipe to their favorites' do
 
-    it 'and post request returns success message and 201 status', :vcr do 
+    it 'and post request returns success message and 201 status' do 
       user = User.create!({
         "name": "Em",
         "email": "eldo@coolkids.com", 
@@ -28,7 +28,7 @@ RSpec.describe 'User can favorite recipes' do
 
     end
 
-    it 'returns error message and status 404 if api key does not find a user', :vcr do 
+    it 'returns error message and status 404 if api key does not find a user' do 
       favorite = {
         "api_key": "123a91baaff5a683a6c8e8e13d1b928c",
         "country": "thailand",
@@ -45,7 +45,7 @@ RSpec.describe 'User can favorite recipes' do
     end
   end
   describe 'a user can get all of their favorited recipes' do 
-    it 'favorites index with api key passed in query params', :vcr do 
+    it 'favorites index with api key passed in query params' do 
       user = User.create!({
         "name": "Em",
         "email": "eldo@coolkids.com", 
@@ -101,7 +101,7 @@ RSpec.describe 'User can favorite recipes' do
       expect(favorites).to_not include(favorite3)
     end
 
-    it 'a user with no favorited recipes returns an empty array', :vcr do 
+    it 'a user with no favorited recipes returns an empty array' do 
       user = User.create!({
         "name": "Em",
         "email": "eldo@coolkids.com", 
@@ -118,7 +118,7 @@ RSpec.describe 'User can favorite recipes' do
 
     end
 
-    it 'an error message is returned if user does not exist', :vcr do 
+    it 'an error message is returned if user does not exist' do 
       get "/api/v1/favorites?api_key=1234766b9a1efcf05df89ca20bd70ef"
 
       favorites = JSON.parse(response.body, symbolize_names: true)
@@ -130,7 +130,7 @@ RSpec.describe 'User can favorite recipes' do
   end
 
   describe 'delete a favorited recipe' do 
-    it 'can send delete request with api key and favorite_id to delete saved recipe', :vcr do 
+    it 'can send delete request with api key and favorite_id to delete saved recipe' do 
       user = User.create!({
         "name": "Em",
         "email": "eldo@coolkids.com", 
@@ -188,7 +188,7 @@ RSpec.describe 'User can favorite recipes' do
 
     end
 
-    it 'returns an error message if no favorites exist for that user', :vcr do 
+    it 'returns an error message if no favorites exist for that user' do 
       user = User.create!({
         "name": "Em",
         "email": "eldo@coolkids.com", 
