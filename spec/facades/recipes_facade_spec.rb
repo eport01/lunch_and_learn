@@ -1,7 +1,7 @@
 require 'rails_helper' 
 
 RSpec.describe RecipesFacade do 
-  it 'creates an array of objects', :vcr do 
+  it 'creates an array of objects' do 
     recipes = RecipesFacade.recipes("Thailand")
 
     expect(recipes).to be_an Array 
@@ -12,7 +12,7 @@ RSpec.describe RecipesFacade do
     expect(recipes[0].url).to eq("https://www.seriouseats.com/recipes/2013/11/andy-rickers-naam-cheuam-naam-taan-piip-palm-sugar-simple-syrup.html")
   end 
 
-  it 'creates an array of objects even if there is one object', :vcr do 
+  it 'creates an array of objects even if there is one object' do 
     recipes = RecipesFacade.recipes("Papua New Guinea")
 
     expect(recipes).to be_an_instance_of(Recipe)
@@ -25,7 +25,7 @@ RSpec.describe RecipesFacade do
     
   end
 
-  it 'returns an empty array if country has no recipes', :vcr do 
+  it 'returns an empty array if country has no recipes' do 
     recipes = RecipesFacade.recipes("Equatorial Guinea")
 
     expect(recipes).to be_an Array 

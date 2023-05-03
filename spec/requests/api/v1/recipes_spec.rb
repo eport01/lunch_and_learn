@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'return recipes for a country' do 
+RSpec.describe 'return recipes for a country', :vcr do 
   before :each do 
     user = {
       "name": "Emily Port",
@@ -13,7 +13,7 @@ RSpec.describe 'return recipes for a country' do
 
     @saved_user = User.last
   end
-  it 'returns recipes when a user inputs a recipe as params', :vcr do 
+  it 'returns recipes when a user inputs a recipe as params' do 
     country = "Peru"
     get "/api/v1/recipes?country=#{country}&api_key=#{@saved_user.api_key}"
     expect(response).to be_successful
@@ -69,7 +69,7 @@ RSpec.describe 'return recipes for a country' do
     VCR.eject_cassette
   end
 
-  it 'returns an empty array if country entered is invalid or no recipes exist', :vcr do 
+  it 'returns an empty array if country entered is invalid or no recipes exist' do 
     get "/api/v1/recipes?country=dog&api_key=#{@saved_user.api_key}"
 
     expect(response).to be_successful

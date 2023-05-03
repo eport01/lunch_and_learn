@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'return learning resources for a country' do 
+RSpec.describe 'return learning resources for a country', :vcr do 
   before :each do 
     user = {
       "name": "Emily Port",
@@ -13,7 +13,7 @@ RSpec.describe 'return learning resources for a country' do
 
     @saved_user = User.last
   end
-  it 'returns images and a video for a country', :vcr do
+  it 'returns images and a video for a country' do
     country = "laos"
     get "/api/v1/learning_resources?country=#{country}&api_key=#{@saved_user.api_key}"
 
@@ -47,7 +47,7 @@ RSpec.describe 'return learning resources for a country' do
     expect(resources[:attributes][:images][0][:url]).to be_an(String)
   end
 
-  it 'if no video or images are found, the video and image keys point to empty object', :vcr do 
+  it 'if no video or images are found, the video and image keys point to empty object' do 
     country = "stevenlalalala"
     get "/api/v1/learning_resources?country=#{country}&api_key=#{@saved_user.api_key}"
 

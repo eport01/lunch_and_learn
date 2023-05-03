@@ -1,7 +1,7 @@
 require 'rails_helper' 
 
 RSpec.describe ImageFacade do 
-  it 'creates max 10 image objects based on a country', :vcr do 
+  it 'creates max 10 image objects based on a country' do 
     images = ImageFacade.images("Laos")
     expect(images).to be_an Array 
 
@@ -14,7 +14,7 @@ RSpec.describe ImageFacade do
   
   end
 
-  it 'returns an empty array if no images were found', :vcr do 
+  it 'returns an empty array if no images were found' do 
     images = ImageFacade.images("stevenlalala")
 
     expect(images).to eq([])
